@@ -18,6 +18,9 @@ export default{
         'land'
       ]
     }
+  },
+  props: {
+    cards: Object
   }
 }
 
@@ -41,7 +44,7 @@ export default{
             </select>
 
             <span>
-                Found X cards
+                Found {{ cards.length }} cards
             </span>
         </div>
 
@@ -49,7 +52,29 @@ export default{
 
         <div>
 
+            <div class="d-flex flex-wrap justify-content-center py-3">
+                <div>
+                  <img :src="cards[0].imageUrl" :alt="cards[0].name">
+                </div>
+                <div>
+                  <img :src="cards[0].imageUrl" :alt="cards[0].name">
+                </div>
+                <div>
+                  <img :src="cards[0].imageUrl" :alt="cards[0].name">
+                </div>
+                <div>
+                  <img :src="cards[0].imageUrl" :alt="cards[0].name">
+                </div>
+                <div>
+                  <img :src="cards[0].imageUrl" :alt="cards[0].name">
+                </div>
+                <div>
+                  <img :src="cards[0].imageUrl" :alt="cards[0].name">
+                </div>
+            </div>
+
         </div>
+
       </div>
 
     </main>
@@ -69,7 +94,6 @@ main {
 
     .container>div:last-of-type {
         background-color: white;
-        height: 300px;
     }
 }
 </style>
