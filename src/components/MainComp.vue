@@ -1,7 +1,7 @@
 <script>
 import SelectOptions from './MainComps/SelectOptions.vue';
 import SingleCard from './MainComps/SingleCard.vue';
-
+import axios from 'axios';
 import { store } from '../store.js'
 
 export default{
@@ -21,7 +21,38 @@ export default{
         'battle',
         'land'
       ],
-      store
+      store,
+      pageCount: 1
+    }
+  },
+  methods: {
+    nextPage() {
+      this.pageCount++
+      axios
+      .get('https://api.magicthegathering.io/v1/cards', {
+        params: {
+          page: this.pageCount
+        }
+      })
+      .then((response) => {
+        this.store.cards = response.data.cards;
+        this.store.loaded = true;
+      });
+    },
+    prevPage() {
+      if (this.pageCount > 1) {
+        this.pageCount--
+        axios
+        .get('https://api.magicthegathering.io/v1/cards', {
+          params: {
+            page: this.pageCount
+          }
+        })
+        .then((response) => {
+          this.store.cards = response.data.cards;
+          this.store.loaded = true;
+        });
+        }
     }
   }
 }
@@ -34,20 +65,33 @@ export default{
       <div class="container">
 
         <!-- TOP MAIN -->
-        <div class="py-4">
+        <div class="py-4 d-flex justify-content-between">
 
-            <select id="cardType">
+            <div class="col-auto">
+              <select id="cardType">
                 <option value="">
                 Choose a card type
                 </option>
                 <SelectOptions 
                 v-for="singleType, i in cardTypes" :key="i"
                 :type="singleType"/>
-            </select>
+              </select>
 
-            <span>
+              <span>
                 Found {{ store.cards.length }} cards
-            </span>
+              </span>
+            </div>
+
+            <div class="col-auto">
+              <button
+              @click="prevPage()">
+                <i class="fa-solid fa-arrow-left"></i>
+              </button>
+              <button
+              @click=" nextPage()">
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
         </div>
 
         <!-- MAIN CONTENT -->

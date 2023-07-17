@@ -15,14 +15,9 @@ export default {
 
 <template>
 
-    
-    <div class="p-1" id="singleCard">
-        <img v-if="singleCard.imageUrl != undefined" :src="singleCard.imageUrl" :alt="singleCard.name">
-        <img v-else src="https://m.media-amazon.com/images/I/61AGZ37D7eL.jpg" :alt="singleCard.name">
-    </div>
-
-        
-   
+    <div class="p-1" id="singleCard" v-if="singleCard.imageUrl != undefined">
+        <img :src="singleCard.imageUrl" :alt="singleCard.name">
+    </div> 
 
 </template>
 
