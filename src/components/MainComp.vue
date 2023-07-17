@@ -1,9 +1,13 @@
 <script>
 import SelectOptions from './MainComps/SelectOptions.vue';
+import SingleCard from './MainComps/SingleCard.vue';
+
+import { store } from '../store.js'
 
 export default{
   components: {
-    SelectOptions
+    SelectOptions,
+    SingleCard
   },
   data() {
     return {
@@ -16,11 +20,9 @@ export default{
         'planeswalker',
         'battle',
         'land'
-      ]
+      ],
+      store
     }
-  },
-  props: {
-    cards: Object
   }
 }
 
@@ -44,7 +46,7 @@ export default{
             </select>
 
             <span>
-                Found {{ cards.length }} cards
+                Found {{ store.cards.length }} cards
             </span>
         </div>
 
@@ -52,27 +54,14 @@ export default{
 
         <div>
 
-            <div class="d-flex flex-wrap justify-content-center py-3">
-                <div>
-                  <img :src="cards[0].imageUrl" :alt="cards[0].name">
-                </div>
-                <div>
-                  <img :src="cards[0].imageUrl" :alt="cards[0].name">
-                </div>
-                <div>
-                  <img :src="cards[0].imageUrl" :alt="cards[0].name">
-                </div>
-                <div>
-                  <img :src="cards[0].imageUrl" :alt="cards[0].name">
-                </div>
-                <div>
-                  <img :src="cards[0].imageUrl" :alt="cards[0].name">
-                </div>
-                <div>
-                  <img :src="cards[0].imageUrl" :alt="cards[0].name">
-                </div>
-            </div>
+            <div class="d-flex flex-wrap justify-content-center p-3"
+            v-if="store.loaded">
 
+              <SingleCard 
+              v-for="(singleCard, i) in store.cards" :key="i"
+              :singleCard="singleCard"/>
+                
+            </div>
         </div>
 
       </div>

@@ -2,6 +2,7 @@
 import HeaderComp from './components/HeaderComp.vue';
 import MainComp from './components/MainComp.vue';
 import axios from 'axios';
+import { store } from './store.js'
 
 export default{
   components:{
@@ -12,14 +13,20 @@ export default{
     return {
       cards: {
 
-      }
+      },
+      store
     }
   },
   created() {
     axios
-      .get('https://api.magicthegathering.io/v1/cards')
+      .get('https://api.magicthegathering.io/v1/cards', {
+        params: {
+          page: 1
+        }
+      })
       .then((response) => {
-        this.cards = response.data.cards;
+        this.store.cards = response.data.cards;
+        this.store.loaded = true;
       });
   }
 }
@@ -29,8 +36,7 @@ export default{
 <template>
 
   <HeaderComp />
-  <MainComp 
-  :cards="cards" />
+  <MainComp />
 
 </template>
 
