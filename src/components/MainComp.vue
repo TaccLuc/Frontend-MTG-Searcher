@@ -62,6 +62,11 @@ export default{
         });
         }
     }
+  },
+  computed: {
+    resultsNumber() {
+      return store.cards.filter(obj => obj.imageUrl).length
+    }
   }
 }
 
@@ -86,7 +91,7 @@ export default{
               </select>
 
               <span>
-                Found {{ store.cards.filter(obj => obj.imageUrl).length }} cards
+                Found {{ resultsNumber }} cards
               </span>
             </div>
 
