@@ -28,39 +28,31 @@ export default{
   methods: {
     nextPage() {
       if (this.pageCount < 18) {
-        this.store.cards = [];
-        this.store.loaded = false;
         this.pageCount++;
-        axios
-        .get('https://api.magicthegathering.io/v1/cards', {
-          params: {
-            page: this.pageCount,
-            type: this.store.type
-          }
-        })
-        .then((response) => {
-          this.store.cards = response.data.cards;
-          this.store.loaded = true;
-        });
+        this.cardFetcher()
       }
     },
     prevPage() {
       if (this.pageCount > 1) {
-        this.store.cards = [];
-        this.store.loaded = false;
         this.pageCount--;
+        this.cardFetcher()
+      }
+    },
+    cardFetcher() {
+      this.store.cards = [];
+        this.store.loaded = false;
         axios
         .get('https://api.magicthegathering.io/v1/cards', {
           params: {
             page: this.pageCount,
-            type: this.store.type
+            type: this.store.type,
+            name: this.store.name
           }
         })
         .then((response) => {
           this.store.cards = response.data.cards;
           this.store.loaded = true;
         });
-        }
     }
   },
   computed: {
@@ -98,6 +90,9 @@ export default{
                 Found {{ resultsNumber }} cards
               </span>
 
+              <input type="text" 
+              @keyup.enter="cardFetcher()"
+              v-model="store.name">
             </div>
 
             <div class="col-auto">
