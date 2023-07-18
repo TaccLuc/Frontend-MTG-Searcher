@@ -19,6 +19,7 @@ export default{
   },
   methods: {
     cardRequest() {
+      this.store.cards = []
       axios
       .get('https://api.magicthegathering.io/v1/cards', {
         params: {

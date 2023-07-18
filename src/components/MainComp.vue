@@ -32,7 +32,8 @@ export default{
         axios
         .get('https://api.magicthegathering.io/v1/cards', {
           params: {
-            page: this.pageCount
+            page: this.pageCount,
+            type: this.store.type
           }
         })
         .then((response) => {
@@ -47,7 +48,8 @@ export default{
         axios
         .get('https://api.magicthegathering.io/v1/cards', {
           params: {
-            page: this.pageCount
+            page: this.pageCount,
+            type: this.store.type
           }
         })
         .then((response) => {
