@@ -133,7 +133,7 @@ export default{
               <h1  class="p-3">
                 Fetching cards...
               </h1>
-              
+
             </div>
 
         </div>
@@ -147,6 +147,7 @@ export default{
 
 main {
     background-color: #1D1D1D;
+    min-height: calc(100vh - 100px);
     border-top: 1px solid white;
     padding-bottom: 30px;
 

@@ -7,9 +7,13 @@ export default {
 </script>
 
 <template>
+
     <option :value="type">
+
         {{ type }}
+        
     </option>
+
 </template>
 
 <style lang="scss" scoped>
