@@ -45,8 +45,7 @@ export default{
 <template>
 
   <HeaderComp />
-  <MainComp 
-  @search="cardRequest()"/>
+  <MainComp />
 
 </template>
 

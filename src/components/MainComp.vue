@@ -74,7 +74,7 @@ export default{
 
             <div class="col-auto">
 
-              <select id="cardType" v-model="store.type" @change="$emit('search')">
+              <select id="cardType" v-model="store.type" @change="cardFetcher()">
 
                 <option value="" selected>
                 Choose a card type
