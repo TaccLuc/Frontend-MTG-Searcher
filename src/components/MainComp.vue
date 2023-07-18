@@ -27,7 +27,7 @@ export default{
   },
   methods: {
     nextPage() {
-      if (this.pageCount < 18) {
+      if (this.pageCount < 18 && this.store.cards.length > 99) {
         this.pageCount++;
         this.cardFetcher()
       }
@@ -115,7 +115,7 @@ export default{
         <div>
 
             <div class="d-flex flex-wrap justify-content-center p-3"
-            v-if="store.loaded">
+            v-if="store.loaded && store.cards.length != 0">
 
               <SingleCard 
               v-for="(singleCard, i) in store.cards" :key="i"
@@ -123,9 +123,17 @@ export default{
                 
             </div>
 
+            <div v-else-if="store.cards.length == 0 && store.loaded">
+
+              <h1 class="p-3">
+                No results from this search, try again
+              </h1>
+
+            </div>
+
             <div v-else>
 
-              <h1  class="p-3">
+              <h1 class="p-3">
                 Fetching cards...
               </h1>
 

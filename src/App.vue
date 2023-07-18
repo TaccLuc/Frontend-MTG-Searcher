@@ -25,7 +25,8 @@ export default{
       .get('https://api.magicthegathering.io/v1/cards', {
         params: {
           page: 1,
-          type: this.store.type
+          type: this.store.type,
+          name: this.store.name
         }
       })
       .then((response) => {
