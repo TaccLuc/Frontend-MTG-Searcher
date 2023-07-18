@@ -28,7 +28,9 @@ export default{
   methods: {
     nextPage() {
       if (this.pageCount < 18) {
-        this.pageCount++
+        this.store.cards = [];
+        this.store.loaded = false;
+        this.pageCount++;
         axios
         .get('https://api.magicthegathering.io/v1/cards', {
           params: {
@@ -44,7 +46,9 @@ export default{
     },
     prevPage() {
       if (this.pageCount > 1) {
-        this.pageCount--
+        this.store.cards = [];
+        this.store.loaded = false;
+        this.pageCount--;
         axios
         .get('https://api.magicthegathering.io/v1/cards', {
           params: {
@@ -110,6 +114,12 @@ export default{
               :singleCard="singleCard"/>
                 
             </div>
+            <div v-else>
+              <h1  class="p-3">
+                Fetching cards...
+              </h1>
+            </div>
+
         </div>
 
       </div>
