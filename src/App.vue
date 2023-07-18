@@ -17,17 +17,23 @@ export default{
       store
     }
   },
-  created() {
-    axios
+  methods: {
+    cardRequest() {
+      axios
       .get('https://api.magicthegathering.io/v1/cards', {
         params: {
-          page: 1
+          page: 1,
+          type: this.store.type
         }
       })
       .then((response) => {
         this.store.cards = response.data.cards;
         this.store.loaded = true;
       });
+    }
+  },
+  created() {
+    this.cardRequest()
   }
 }
 
@@ -36,7 +42,8 @@ export default{
 <template>
 
   <HeaderComp />
-  <MainComp />
+  <MainComp 
+  @search="cardRequest()"/>
 
 </template>
 

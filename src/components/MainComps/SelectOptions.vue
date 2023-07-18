@@ -7,7 +7,7 @@ export default {
 </script>
 
 <template>
-    <option value="creature">
+    <option :value="type">
         {{ type }}
     </option>
 </template>

@@ -70,8 +70,8 @@ export default{
         <div class="py-4 d-flex justify-content-between">
 
             <div class="col-auto">
-              <select id="cardType">
-                <option value="">
+              <select id="cardType" v-model="store.type" @change="$emit('search')">
+                <option value="" selected>
                 Choose a card type
                 </option>
                 <SelectOptions 
@@ -121,6 +121,10 @@ main {
     background-color: #1D1D1D;
     border-top: 1px solid white;
     padding-bottom: 30px;
+
+    select {
+      text-transform: capitalize;
+    }
 
     span {
         color: white;

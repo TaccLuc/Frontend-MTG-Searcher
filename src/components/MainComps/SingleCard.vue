@@ -24,8 +24,8 @@ export default {
 
     <div class="p-1" id="singleCard" v-if="singleCard.hasOwnProperty('imageUrl')">
         <img :src="singleCard.imageUrl" :alt="singleCard.name">
-        <!-- <img v-if="loadedImg" :src="singleCard.imageUrl" @load="imageLoad()" :alt="singleCard.name"> -->
-        <!-- <img v-else :src="imgSrc" :alt="singleCard.name"> -->
+        <!-- <img v-if="loadedImg" :src="singleCard.imageUrl" @load="imageLoad()" :alt="singleCard.name">
+        <img v-else :src="imgSrc" :alt="singleCard.name"> -->
     </div> 
 
 </template>
