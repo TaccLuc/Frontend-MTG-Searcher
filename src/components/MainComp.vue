@@ -27,17 +27,19 @@ export default{
   },
   methods: {
     nextPage() {
-      this.pageCount++
-      axios
-      .get('https://api.magicthegathering.io/v1/cards', {
-        params: {
-          page: this.pageCount
-        }
-      })
-      .then((response) => {
-        this.store.cards = response.data.cards;
-        this.store.loaded = true;
-      });
+      if (this.pageCount < 18) {
+        this.pageCount++
+        axios
+        .get('https://api.magicthegathering.io/v1/cards', {
+          params: {
+            page: this.pageCount
+          }
+        })
+        .then((response) => {
+          this.store.cards = response.data.cards;
+          this.store.loaded = true;
+        });
+      }
     },
     prevPage() {
       if (this.pageCount > 1) {
