@@ -78,7 +78,7 @@ export default{
               </select>
 
               <span>
-                Found {{ store.cards.length }} cards
+                Found {{ store.cards.filter(obj => obj.imageUrl).length }} cards
               </span>
             </div>
 
