@@ -5,16 +5,15 @@ export default {
     data() {
        return {
             store,
-            imgSrc: 'https://i.ebayimg.com/images/g/3IgAAOSwvD9jyN0y/s-l1200.webp',
-            loadedImg: false
+            imgSrc: 'https://i.ebayimg.com/images/g/3IgAAOSwvD9jyN0y/s-l1200.webp'
        }
     },
     props: {
         singleCard: Object
     },
     methods: {
-        imageLoad() {
-            this.loadedImg = true
+        cardLoader() {
+            this.imgSrc = this.singleCard.imageUrl
         }
     }
 }
@@ -24,9 +23,7 @@ export default {
 
     <div class="p-1" id="singleCard" v-if="singleCard.hasOwnProperty('imageUrl')">
 
-        <img :src="singleCard.imageUrl" :alt="singleCard.name">
-        <!-- <img v-if="loadedImg" :src="singleCard.imageUrl" @load="imageLoad()" :alt="singleCard.name">
-        <img v-else :src="imgSrc" :alt="singleCard.name"> -->
+        <img :src="imgSrc" @load="cardLoader()" :alt="singleCard.name">
         
     </div> 
 

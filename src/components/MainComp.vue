@@ -93,6 +93,7 @@ export default{
               <input type="text" 
               @keyup.enter="cardFetcher()"
               v-model="store.name">
+
             </div>
 
             <div class="col-auto">
@@ -131,6 +132,14 @@ export default{
 
             </div>
 
+            <div v-else-if="store.cards.length == 0 && store.name == '' && store.type == ''">
+
+              <h1 class="p-3">
+                Search for a card
+              </h1>
+
+            </div>
+            
             <div v-else>
 
               <h1 class="p-3">

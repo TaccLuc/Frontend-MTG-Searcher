@@ -18,7 +18,7 @@ export default{
     }
   },
   methods: {
-    cardRequest() {
+    cardFetcher() {
       this.store.cards = [];
       this.store.loaded = false;
       axios
@@ -36,7 +36,7 @@ export default{
     }
   },
   created() {
-    this.cardRequest()
+    // this.cardFetcher()
   }
 }
 
