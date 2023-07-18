@@ -81,29 +81,37 @@ export default{
         <div class="py-4 d-flex justify-content-between">
 
             <div class="col-auto">
+
               <select id="cardType" v-model="store.type" @change="$emit('search')">
+
                 <option value="" selected>
                 Choose a card type
                 </option>
+
                 <SelectOptions 
                 v-for="singleType, i in cardTypes" :key="i"
                 :type="singleType"/>
+
               </select>
 
               <span>
                 Found {{ resultsNumber }} cards
               </span>
+
             </div>
 
             <div class="col-auto">
+
               <button
               @click="prevPage()">
                 <i class="fa-solid fa-arrow-left"></i>
               </button>
+
               <button
               @click=" nextPage()">
                 <i class="fa-solid fa-arrow-right"></i>
               </button>
+
             </div>
         </div>
 
@@ -119,10 +127,13 @@ export default{
               :singleCard="singleCard"/>
                 
             </div>
+
             <div v-else>
+
               <h1  class="p-3">
                 Fetching cards...
               </h1>
+              
             </div>
 
         </div>
